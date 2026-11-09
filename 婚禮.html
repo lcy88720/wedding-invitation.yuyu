@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | 我們的婚禮派對</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        english: ['"Cinzel"', '"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            100: '#fdfbf7',
+                            300: '#e2d4be',
+                            500: '#c5a059',
+                            600: '#b08b43',
+                            800: '#7a5c24',
+                        },
+                        champagne: '#f7f4ef',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自訂字型類別 */
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: #0f1410;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        .font-english {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* 背景玻璃擬態與遮罩 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .glass-card-dark {
+            background: rgba(20, 25, 20, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* 文字陰影增強可讀性 */
+        .text-glow {
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 滾動動畫漸變 */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* 微動效箭頭 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .animate-float {
+            animation: float 2s infinite ease-in-out;
+        }
+
+        /* 簡約邊框質感 */
+        .inner-border {
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            outline: 4px solid transparent;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- 音樂播放控制（靜音/播放按鈕） -->
+    <button id="musicToggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md shadow-lg border border-gold-300 flex items-center justify-center text-gold-600 hover:scale-105 transition-all duration-300">
+        <i class="fa-solid fa-heart text-lg animate-pulse"></i>
+    </button>
+
+    <!-- SECTION 1: 封面 Hero Section -->
+    <section class="relative h-screen w-full flex flex-col justify-between items-center text-center px-4 py-12 overflow-hidden">
+        <!-- 背景圖片 (影像一: 藍天與新人) -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-1000" style="background-image: url('image.png');">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+        </div>
+
+        <!-- 頂部副標題 -->
+        <div class="relative z-10 pt-8 tracking-widest text-white/90 fade-in-section">
+            <p class="font-english text-sm uppercase tracking-[0.3em] mb-1">Save The Date</p>
+            <div class="w-8 h-[1px] bg-gold-300 mx-auto opacity-70"></div>
+        </div>
+
+        <!-- 主標題與日期 -->
+        <div class="relative z-10 text-white fade-in-section max-w-lg mx-auto">
+            <span class="font-english text-lg md:text-xl italic tracking-wider block text-gold-300 mb-2">Wedding Party</span>
+            <h1 class="text-3xl md:text-5xl font-light tracking-[0.2em] mb-4 text-glow leading-relaxed">
+                邀請您參加<br>我們的婚禮派對
+            </h1>
+            <p class="font-english text-2xl md:text-3xl tracking-[0.25em] font-light text-white/90 mt-6">
+                2026 . 12 . 05
+            </p>
+            <p class="text-sm tracking-widest text-gold-200 mt-1 font-light">SATURDAY LUNCH</p>
+        </div>
+
+        <!-- 滾動提示向下箭頭 -->
+        <a href="#details" class="relative z-10 text-white/80 hover:text-white transition-colors duration-300 flex flex-col items-center gap-2 pb-4">
+            <span class="font-english text-xs uppercase tracking-[0.2em] opacity-80">Scroll Down</span>
+            <i class="fa-solid fa-angle-down text-xl animate-float"></i>
+        </a>
+    </section>
+
+    <!-- SECTION 2: 邀請細節 & 時間安排 -->
+    <section id="details" class="relative min-h-screen w-full flex items-center justify-center py-20 px-4">
+        <!-- 背景圖片 (影像二: 抱起擁吻) -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('image_2.png');">
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-xl w-full mx-auto">
+            <div class="glass-card rounded-2xl p-8 md:p-12 text-center shadow-2xl inner-border fade-in-section">
+                <!-- 裝飾圖示 -->
+                <div class="w-12 h-12 rounded-full bg-gold-100 border border-gold-300 flex items-center justify-center mx-auto mb-6 text-gold-600">
+                    <i class="fa-solid fa-champagne-glasses text-lg"></i>
+                </div>
+
+                <p class="font-english text-gold-600 text-sm tracking-[0.3em] uppercase mb-2">Invitation</p>
+                <h2 class="text-2xl md:text-3xl text-gray-800 tracking-widest font-normal mb-8">
+                    誠摯邀請 惠臨同樂
+                </h2>
+
+                <div class="w-16 h-[1px] bg-gold-300 mx-auto mb-8"></div>
+
+                <!-- 時間安排卡片 -->
+                <div class="space-y-6 text-gray-700 leading-relaxed">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 py-3 border-y border-gold-300/30">
+                        <div class="text-center">
+                            <span class="text-xs text-gold-600 font-english uppercase block tracking-wider">Date</span>
+                            <span class="text-lg tracking-wider font-medium">2026 年 12 月 05 日</span>
+                        </div>
+                        <div class="hidden md:block w-px h-8 bg-gold-300/40"></div>
+                        <div class="text-center">
+                            <span class="text-xs text-gold-600 font-english uppercase block tracking-wider">Day</span>
+                            <span class="text-lg tracking-wider font-medium">星期六 午宴</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-amber-50/50 rounded-xl border border-gold-300/20">
+                            <i class="fa-regular fa-clock text-gold-600 mb-1 block text-base"></i>
+                            <span class="text-xs text-gray-500 block mb-1">入場時間</span>
+                            <span class="text-lg font-english font-semibold text-gray-800">12 : 00</span>
+                        </div>
+                        <div class="p-4 bg-amber-50/50 rounded-xl border border-gold-300/20">
+                            <i class="fa-solid fa-utensils text-gold-600 mb-1 block text-base"></i>
+                            <span class="text-xs text-gray-500 block mb-1">開席時間</span>
+                            <span class="text-lg font-english font-semibold text-gray-800">12 : 25</span>
+                        </div>
+                    </div>
+
+                    <!-- 特色亮點 -->
+                    <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-amber-100/60 via-amber-50/80 to-amber-100/60 border border-gold-300/40 text-gold-800">
+                        <p class="text-sm tracking-wider font-medium flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-beer-mug-empty text-gold-600"></i>
+                            現場提供手工啤酒暢飲！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: 地點導航與停車資訊 -->
+    <section class="relative min-h-screen w-full flex items-center justify-center py-20 px-4">
+        <!-- 背景圖片 (影像三: 墨鏡歡樂照) -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('image_3.png');">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-xl w-full mx-auto">
+            <div class="glass-card rounded-2xl p-8 md:p-12 text-center shadow-2xl inner-border fade-in-section">
+                <!-- 圖示 -->
+                <div class="w-12 h-12 rounded-full bg-gold-100 border border-gold-300 flex items-center justify-center mx-auto mb-6 text-gold-600">
+                    <i class="fa-solid fa-location-dot text-lg"></i>
+                </div>
+
+                <p class="font-english text-gold-600 text-sm tracking-[0.3em] uppercase mb-2">Location</p>
+                <h2 class="text-2xl md:text-3xl text-gray-800 tracking-widest font-normal mb-6">
+                    宴客地點與交通
+                </h2>
+
+                <div class="w-16 h-[1px] bg-gold-300 mx-auto mb-8"></div>
+
+                <!-- 餐廳與地址導向超連結 -->
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-xs text-gold-600 font-english uppercase tracking-widest mb-1">Venue</p>
+                        <h3 class="text-2xl font-semibold text-gray-800 tracking-wider">路德威手工啤酒餐廳</h3>
+                    </div>
+
+                    <!-- 點擊導航超連結按鈕 -->
+                    <a href="https://maps.app.goo.gl/T6UdF37nFFDy9K4a8?g_st=ic" target="_blank" rel="noopener noreferrer" 
+                       class="group inline-flex flex-col items-center justify-center p-5 rounded-xl bg-white/90 border border-gold-300 hover:border-gold-500 hover:shadow-xl transition-all duration-300 w-full group">
+                        <div class="flex items-center gap-2 text-gray-700 group-hover:text-gold-600 transition-colors">
+                            <i class="fa-solid fa-map-location-dot text-gold-500 text-lg"></i>
+                            <span class="text-base tracking-wider font-medium">臺中市西區公益路36號</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 group-hover:text-gold-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </div>
+                        <span class="text-xs text-gold-600 mt-2 tracking-widest font-english">👉 點擊開啟 Google 地圖導航</span>
+                    </a>
+
+                    <!-- 停車資訊 -->
+                    <div class="p-5 rounded-xl bg-gray-50/90 border border-gray-200 text-left space-y-2">
+                        <div class="flex items-center gap-2 text-gray-800 font-medium border-b border-gray-200 pb-2">
+                            <i class="fa-solid fa-square-parking text-gold-600 text-lg"></i>
+                            <span class="tracking-wider">停車資訊說明</span>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed pt-1">
+                            餐廳周邊設有多個付費停車場，方便停放愛車。
+                        </p>
+                        <div class="inline-block mt-1 px-3 py-1 rounded bg-amber-100/80 text-gold-800 text-xs font-medium">
+                            💡 特別貼心：新人提供 <span class="font-bold">100 元停車費補助</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: 尾頁致謝與經典照片展示 -->
+    <section class="relative h-screen w-full flex flex-col justify-between items-center text-center px-4 py-16">
+        <!-- 背景圖片 (影像四: 黑白質感海邊牽手) -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('image_4.png');">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
+        </div>
+
+        <div class="relative z-10 pt-12 fade-in-section">
+            <span class="font-english text-gold-300 text-sm tracking-[0.4em] uppercase block mb-2">Thank You</span>
+            <div class="w-12 h-[1px] bg-gold-300 mx-auto"></div>
+        </div>
+
+        <div class="relative z-10 text-white max-w-md mx-auto fade-in-section space-y-6">
+            <h2 class="text-3xl md:text-4xl font-light tracking-[0.25em] text-glow leading-loose">
+                期待與您相見
+            </h2>
+            <p class="text-gray-300 text-sm tracking-widest font-light leading-relaxed">
+                邀請您一同分享我們的喜悅<br>共度這美好難忘的時光
+            </p>
+            <div class="pt-4">
+                <span class="font-english text-2xl tracking-[0.3em] text-gold-300 italic font-light">See you soon</span>
+            </div>
+        </div>
+
+        <div class="relative z-10 pb-8 fade-in-section">
+            <p class="font-english text-xs text-gray-400 tracking-[0.3em]">2026.12.05 WEDDING PARTY</p>
+        </div>
+    </section>
+
+    <!-- JavaScript 滾動動畫觸發與互動 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer 實現滾動漸顯效果
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const fadeSections = document.querySelectorAll('.fade-in-section');
+            fadeSections.forEach(section => observer.observe(section));
+
+            // 音樂按鈕微互動（可作為裝飾或連結）
+            const musicBtn = document.getElementById('musicToggle');
+            let isHearted = false;
+            
+            musicBtn.addEventListener('click', () => {
+                isHearted = !isHearted;
+                const icon = musicBtn.querySelector('i');
+                if (isHearted) {
+                    icon.className = 'fa-solid fa-heart text-lg text-red-500 scale-125 transition-transform';
+                } else {
+                    icon.className = 'fa-solid fa-heart text-lg text-gold-600 animate-pulse';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
